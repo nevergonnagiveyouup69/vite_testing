@@ -43,4 +43,32 @@ After that Update the vit.config.js file to something like this.
 The primary purpose of `setup.js` is to facilitate running test cases locally. It ensures that the paths defined in the Vite configuration match those specified in `setup.js`. To achieve this, we are utilizing JSDOM as our local environment for testing.
 
 ---
-=======
+
+### 4. Ran vitest
+
+We should be ready to use vitest.
+ 
+Update your package.json file by installing jsdom, react testing library to run the vite tests.
+
+**React-testing-library**
+
+package and docs: https://testing-library.com/docs/react-testing-library/intro/
+
+```bash
+npm install @testing-library/react @testing-library/jest-dom --save-dev
+```
+**jsdom**
+
+package and docs: https://www.npmjs.com/package/jsdom
+
+```bash
+npm i jsdom
+```
+
+Since we are using BDD we need to also install vitest library. For that follow this guide: https://vitest-cucumber.miceli.click/install
+Or we can just use this command 
+
+```bash
+npm install @amiceli/vitest-cucumber --save-dev
+```
+but it is optional if we are not using bdd
