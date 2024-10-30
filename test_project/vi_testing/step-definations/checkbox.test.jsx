@@ -1,7 +1,7 @@
 import { loadFeature, describeFeature } from "@amiceli/vitest-cucumber"
 import { render, screen, waitFor } from '@testing-library/react'
 import { expect } from 'vitest';
-import App from '../src/App.jsx';
+import App from "../../src/App.jsx";
 
 const feature = await loadFeature('vi_testing/features/2_check_box.feature')
 
