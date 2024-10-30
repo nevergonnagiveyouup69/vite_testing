@@ -50,6 +50,7 @@ We should be ready to use vitest.
  
 Update your package.json file by installing jsdom, react testing library to run the vite tests.
 
+---
 **React-testing-library**
 
 package and docs: https://testing-library.com/docs/react-testing-library/intro/
@@ -57,6 +58,7 @@ package and docs: https://testing-library.com/docs/react-testing-library/intro/
 ```bash
 npm install @testing-library/react @testing-library/jest-dom --save-dev
 ```
+---
 **jsdom**
 
 package and docs: https://www.npmjs.com/package/jsdom
@@ -64,6 +66,7 @@ package and docs: https://www.npmjs.com/package/jsdom
 ```bash
 npm i jsdom
 ```
+---
 
 Since we are using BDD we need to also install vitest library. For that follow this guide: https://vitest-cucumber.miceli.click/install
 Or we can just use this command 
