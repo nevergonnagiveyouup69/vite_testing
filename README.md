@@ -137,7 +137,7 @@ npm run test
 
 ## React testing library and mocking
 
-When we create react components we can call its using import and then rendering it
+For testing react components we can call its using import and then rendering it.
 
 ![alt text](<github_assets/Untitled Diagram.drawio.png>)
 
