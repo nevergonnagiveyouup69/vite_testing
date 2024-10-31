@@ -141,6 +141,15 @@ For testing react components we can call its using import and then rendering it.
 
 ![alt text](<github_assets/Untitled Diagram.drawio.png>)
 
+
+---
+
+
+# Getting Started With Playwright
+
+[Playwright](https://playwright.dev/docs/intro) is used for end to end testing.
+
+---
 #### Additional Resources
 
 - [React Testing Library Documentation](https://testing-library.com/docs/react-testing-library/intro/)
