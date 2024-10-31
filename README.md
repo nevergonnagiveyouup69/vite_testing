@@ -135,6 +135,12 @@ To run your tests, simply execute:
 npm run test
 ```
 
+## React testing library and mocking
+
+When we create react components we can call its using import and then rendering it
+
+![alt text](<github_assets/Untitled Diagram.drawio.png>)
+
 #### Additional Resources
 
 - [React Testing Library Documentation](https://testing-library.com/docs/react-testing-library/intro/)
