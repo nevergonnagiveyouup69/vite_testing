@@ -38,12 +38,6 @@ After that Update the vit.config.js file to something like this.
 ![alt text](<github_assets/Screenshot from 2024-10-29 13-18-12.png>)
 
 
----
-
-The primary purpose of `setup.js` is to facilitate running test cases locally. It ensures that the paths defined in the Vite configuration match those specified in `setup.js`. To achieve this, we are utilizing JSDOM as our local environment for testing.
-
----
-
 ### 4. Setting up Vitest with React Testing Library, jsdom, and BDD
 
 A comprehensive guide to configure Vitest for React component testing with support for BDD testing patterns.
@@ -131,6 +125,9 @@ setVitestCucumberConfiguration({
     }
 });
 ```
+
+The primary purpose of `setup.js` is to facilitate running test cases locally. It ensures that the paths defined in the Vite configuration match those specified in `setup.js`. To achieve this, we are utilizing JSDOM as our local environment for testing.
+
 
 #### Running Tests
 To run your tests, simply execute:
