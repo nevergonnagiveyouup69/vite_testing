@@ -44,14 +44,11 @@ The primary purpose of `setup.js` is to facilitate running test cases locally. I
 
 ---
 
-### 4. Ran vitest
-
-
-# Setting up Vitest with React Testing Library, jsdom, and BDD
+### 4. Setting up Vitest with React Testing Library, jsdom, and BDD
 
 A comprehensive guide to configure Vitest for React component testing with support for BDD testing patterns.
 
-## Dependencies Installation
+### Dependencies Installation
 
 ### Core Testing Libraries
 ```bash
@@ -68,7 +65,7 @@ If you want to use Behavior Driven Development (BDD):
 npm install @amiceli/vitest-cucumber --save-dev
 ```
 
-## Project Configuration
+#### Project Configuration
 
 ### Update Package.json
 Add the test script to your package.json:
@@ -135,13 +132,13 @@ setVitestCucumberConfiguration({
 });
 ```
 
-## Running Tests
+#### Running Tests
 To run your tests, simply execute:
 ```bash
 npm run test
 ```
 
-## Additional Resources
+#### Additional Resources
 
 - [React Testing Library Documentation](https://testing-library.com/docs/react-testing-library/intro/)
 - [jsdom Package](https://www.npmjs.com/package/jsdom)
