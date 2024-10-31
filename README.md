@@ -48,9 +48,9 @@ The primary purpose of `setup.js` is to facilitate running test cases locally. I
 
 A comprehensive guide to configure Vitest for React component testing with support for BDD testing patterns.
 
-### Dependencies Installation
+#### Dependencies Installation
 
-### Core Testing Libraries
+#### Core Testing Libraries
 ```bash
 # Install React Testing Library and Jest DOM
 npm install @testing-library/react @testing-library/jest-dom --save-dev
@@ -59,15 +59,15 @@ npm install @testing-library/react @testing-library/jest-dom --save-dev
 npm install jsdom --save-dev
 ```
 
-### BDD Support (Optional)
+#### BDD Support (Optional)
 If you want to use Behavior Driven Development (BDD):
 ```bash
 npm install @amiceli/vitest-cucumber --save-dev
 ```
 
-#### Project Configuration
+### Project Configuration
 
-### Update Package.json
+#### Update Package.json
 Add the test script to your package.json:
 ```json
 {
@@ -77,7 +77,7 @@ Add the test script to your package.json:
 }
 ```
 
-### Project Structure
+#### Project Structure
 Create the following directory structure for your tests:
 ```
 vi_testing/
@@ -88,7 +88,7 @@ vi_testing/
 └── setup.js
 ```
 
-### Test Setup Configuration
+#### Test Setup Configuration
 Create a `setup.js` file with the following configuration:
 
 ```javascript
