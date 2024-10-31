@@ -144,14 +144,25 @@ For testing react components we can call its using import and then rendering it.
 
 ---
 
-
 # Getting Started With Playwright
 
-[Playwright](https://playwright.dev/docs/intro) is used for end to end testing.
+[Playwright](https://playwright.dev/docs/intro) is used for end to end testing and api testing. We well learn to install run and use playwright to run bdd test cases.
+Its get started.
+
+First we add a npm package for installing all playwright dependencies 
+
+```bash
+npm init playwright@latest
+```
+After going thought the steps and removing all the extra files
+
 
 ---
+
+
 #### Additional Resources
 
 - [React Testing Library Documentation](https://testing-library.com/docs/react-testing-library/intro/)
 - [jsdom Package](https://www.npmjs.com/package/jsdom)
 - [Vitest Cucumber Documentation](https://vitest-cucumber.miceli.click/install)
+- [Playwright Docs](https://playwright.dev/docs/intro)
