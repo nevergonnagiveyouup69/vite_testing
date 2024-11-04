@@ -1,26 +1,25 @@
-const { AfterAll, BeforeAll, AfterStep, setDefaultTimeout } = require('@cucumber/cucumber');
-// const { reset_account } = require('../bdd_api/index')
+/* eslint-disable max-len */
+const { Before, BeforeAll, AfterAll, After, BeforeStep, AfterStep, setDefaultTimeout } = require('@cucumber/cucumber');
 const { chromium } = require('playwright');
-
-const { v4: uuidv4 } = require('uuid');
-const fs = require('fs').promises;
-const fswithoutPromise = require('fs');
-const path = require('path');
 const { createCoverageMap } = require('istanbul-lib-coverage');
+const fs = require('fs');
+const path = require('path');
+const { v4: uuidv4 } = require('uuid');
+global.page = null
+global.admin_user_id = []
 
-
-setDefaultTimeout(20 * 1000);
+let loginPerformed = false;
+setDefaultTimeout(34000);
 
 BeforeAll(async function () {
     global.browser = await chromium.launch({
         headless: false, //make this has false if you want to visualize the browser while running the testcases.
         timeout: 24000,
-        // slowMo: 100,require
+        slowMo: 100,
     });
     const context = await browser.newContext({
         viewport: { height: 1080, width: 1900 }
     });
-
     global.page = await context.newPage();
     global.current_process_name = uuidv4()
     console.log("Current process name:", global.current_process_name);
@@ -32,54 +31,55 @@ BeforeAll(async function () {
         // global.__coverage__ = await driver.executeScript("return __coverage__;");
         global.coverageMap = createCoverageMap(__coverage__);
     } catch (error) {
-        throw new Error('::: __coverage__ ::: Coverage Mapping Object Not Found :::'+error)
+        throw new Error('::: __coverage__ ::: Coverage Mapping Object Not Found :::')
     }
     await global.page.coverage.startJSCoverage();
 })
+After(function (scenario) {
+    console.log('scenario.result.status', scenario.result.status);
+    let failedScenarios = path.join(__dirname, 'failedScenarios');
+    if (!fs.existsSync(failedScenarios)) {
+        fs.mkdirSync(failedScenarios);
+    }
+    if (scenario.result.status === 'FAILED') {
+        const world = this;
+        const uniqueId = uuidv4();
+        return page.screenshot().then(function (screenShot, error) {
+            if (!error) {
+                world.attach(screenShot, 'image/png');
+                failedScenarios = path.join(failedScenarios, `${uniqueId}_${scenario.pickle.id}_${scenario.pickle.name}.png`);
+                fs.writeFile(failedScenarios, screenShot, (err) => {
+                    if (err) {
+                        console.error('Error writing coverage data:', err);
+                    } else {
+                        console.log('Coverage data has been written to:', failedScenarios);
+                    }
+                });
+            }
+        });
+    }
+});
 
 AfterStep(async function () {
-    let updatedCoverageData = null
-    try {
-        updatedCoverageData = await global.page.evaluate(() => {
-            return window.__coverage__;
-        });
-    } catch (error) {
-        throw new Error('::: __coverage__ ::: Coverage Mapping Object Not Found :::'+error)
-    }
+    const updatedCoverageData = await page.evaluate(() => window.__coverage__);
     const updatedCoverageMap = createCoverageMap(updatedCoverageData);
     global.coverageMap.merge(updatedCoverageMap);
 });
 
-
 AfterAll(async function () {
     const coverageDataDir = path.join(__dirname, 'coverageData');
-    try {
-        await fs.access(coverageDataDir);
-
-    } catch (error) {
-        if (error.code === 'ENOENT') {
-            await fs.mkdir(coverageDataDir, { recursive: true });
-        } else {
-            console.error('Error accessing or creating directory:', error);
-            throw error;
-        }
+    if (!fs.existsSync(coverageDataDir)) {
+        fs.mkdirSync(coverageDataDir);
     }
-
-    const coverageDataFile = path.join(coverageDataDir, `coverage_${global.current_process_name || 'default'}.json`);
+    const coverageDataFile = path.join(coverageDataDir, `coverage_${global.current_process_name}.json`);
     const coverageData = global.coverageMap.toJSON();
-
-    try {
-        await fs.writeFile(coverageDataFile, JSON.stringify(coverageData, null, 2));
-    } catch (error) {
-        console.error('Error writing coverage data to file:', error);
-        throw error;
-    }
-
-    try {
-        // await global.browser.close();
-    } catch (error) {
-        console.error('Error closing the browser:', error);
-        throw error;
-    }
-
+    // Write coverage data to file
+    fs.writeFile(coverageDataFile, JSON.stringify(coverageData), (err) => {
+        if (err) {
+            console.error('Error writing coverage data:', err);
+        } else {
+            console.log('Coverage data has been written to:', coverageDataFile);
+        }
+    });
+    await browser.close();
 });

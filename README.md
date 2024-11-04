@@ -154,7 +154,31 @@ First we add a npm package for installing all playwright dependencies
 ```bash
 npm init playwright@latest
 ```
-After going thought the steps and removing all the extra files
+After going thought the steps and removing all the extra files which allow us to run playwright without bdd
+To do this with BDD.
+
+Create the following structure for your tests:
+```
+test/
+├── bdd-api/
+│   └── token.js
+├── bdd-payload/
+│   └── index.js
+├── intergation-testing/
+│   └── example.feature
+|   └── cucumber.js
+└── step_definitions/
+    └── example.js
+    └── Driver.js
+```
+
+After this add the driver file from the repo: [Driver](https://github.com/nevergonnagiveyouup69/vite_testing/blob/74ce3629a937da1633a195a3b9dff987a29a25cd/test_project/test/step-definations/Driver.js)
+Its should look like this.
+
+![alt text](</github_assets/Screenshot from 2024-11-04 10-58-36.png>)
+
+Then you are done.
+Happy testing.
 
 
 ---
@@ -166,3 +190,6 @@ After going thought the steps and removing all the extra files
 - [jsdom Package](https://www.npmjs.com/package/jsdom)
 - [Vitest Cucumber Documentation](https://vitest-cucumber.miceli.click/install)
 - [Playwright Docs](https://playwright.dev/docs/intro)
+
+
+---
