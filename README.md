@@ -70,6 +70,7 @@ Add the test script to your package.json:
   }
 }
 ```
+You can update the cli by using this [CLI](https://vitest.dev/guide/cli.html). This can allow as to add coverage exclude files etc.,
 
 #### Project Structure
 Create the following directory structure for your tests:
