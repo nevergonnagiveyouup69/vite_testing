@@ -9,7 +9,7 @@ This repository sets up a testing environment for a React project using Vite and
 
 ## Getting Started
 
-### 1. Set Up React and vite
+### 1. Set Up React and vite (**PROCEED WITH THIS STEP ONLY IF YOU'RE SETTING UP A NEW PROJECT**)
 
 Start by setting up a vite + React project in the current directory using:
 
