@@ -46,10 +46,8 @@ A comprehensive guide to configure Vitest for React component testing with suppo
 
 #### Core Testing Libraries
 ```bash
-# Install React Testing Library and Jest DOM
 npm install @testing-library/react @testing-library/jest-dom --save-dev
 
-# Install jsdom for browser environment simulation
 npm install jsdom --save-dev
 ```
 
